@@ -35,10 +35,12 @@
     videoWrapperElem.innerHTML = ''
   }
 
-  const priceHelp = '购买授权后可用于个人、商用项目中，无任何限制；\n提供一年内的维护和技术支持群，即使超过维护期使用也不受任何影响，只要在所支持的版本之内使用即可。'
+  const defPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制'
+  const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制；\n提供一年内的维护和技术支持群，即使超过维护期使用也不受任何影响，只要在所支持的版本之内使用即可。'
 
   const proPrice = '￥1200<span class="price-unit">/发布版</span>、￥2800<span class="price-unit">/源码</span>'
-  document.getElementById('proTitle').innerHTML = `<span>pro 专业版</span><span class="price">（${proPrice}）</span><i class="price-icon">!</i>`
+  document.getElementById('proTitle').innerHTML = `<span>pro 专业版</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
+  document.getElementById('proPriceHelp').title = proPriceHelp
 
   const proFeatures = {
     base: [
@@ -208,6 +210,8 @@
   }
 
   Array.from(document.querySelectorAll('.price-icon')).forEach(function (iconElem) {
-    iconElem.title = priceHelp.replace(/"/g, '\'')
+    if (!iconElem.title) {
+      iconElem.title = defPriceHelp.replace(/"/g, '\'')
+    }
   })
 })()
