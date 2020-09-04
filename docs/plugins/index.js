@@ -38,7 +38,7 @@
   const defPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；'
   const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；\n并且提供一年的维护和技术支持群，即使超过维护期使用也不受任何影响，只要在所支持的版本之内永久使用。'
 
-  const proPrice = '￥1200<span class="price-unit">/发布版</span>、￥2800<span class="price-unit">/源码</span>'
+  const proPrice = '￥1200<span class="price-unit">-发布版</span>、￥2800<span class="price-unit">-源码</span>'
   document.getElementById('proTitle').innerHTML = `<span>pro 专业版</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
   document.getElementById('proPriceHelp').title = proPriceHelp
 
@@ -143,7 +143,7 @@
         '支持匹配已关键字结尾',
         '支持匹配空值'
       ].join('\n'),
-      price: '100<span class="price-unit">/源码</span>'
+      price: '100<span class="price-unit">-源码</span>'
     },
     {
       name: 'FilterCombination',
@@ -176,7 +176,7 @@
         '输入 "~*" 可查找到 "*"',
         '输入 "~~" 可查找到 "~"'
       ].join('\n'),
-      price: '300<span class="price-unit">/源码</span>'
+      price: '300<span class="price-unit">-源码</span>'
     }
   ]
   document.getElementById('filterWrapper').innerHTML = createList(filterList)
@@ -186,13 +186,13 @@
   //     name: 'EditDownTextarea',
   //     title: '下拉文本域',
   //     features: '下拉文本域：\n支持单元格点击弹出下拉文本域\n支持文本域实时统计字符',
-  //     price: '100<span class="price-unit">/源码</span>'
+  //     price: '100<span class="price-unit">-源码</span>'
   //   },
   //   {
   //     name: 'EditPopupTextarea',
   //     title: '弹窗文本域',
   //     features: '弹窗文本域：\n支持单元格点击弹出文本域编辑窗口\n支持文本域窗口大小缩放\n支持文本域窗口全屏\n支持文本域实时统计字符',
-  //     price: '100<span class="price-unit">/源码</span>'
+  //     price: '100<span class="price-unit">-源码</span>'
   //   }
   // ]
   // document.getElementById('editWrapper').innerHTML = createList(editList)
