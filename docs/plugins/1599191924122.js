@@ -115,6 +115,14 @@
     {
       title: '区域选取、虚拟滚动、虚拟合并',
       name: 'proVirtualMergeScroll'
+    },
+    {
+      title: '丰富的快捷菜单',
+      name: 'proContextmenu'
+    },
+    {
+      title: '支持 echarts 图表渲染',
+      name: 'proCharts'
     }
   ]
 
