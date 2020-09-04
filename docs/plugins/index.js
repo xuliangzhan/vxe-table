@@ -36,7 +36,7 @@
   }
 
   const defPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；'
-  const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；\n并且提供一年的维护和技术支持群，即使超过维护期使用也不受任何影响，只要在所支持的版本之内使用即可。'
+  const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；\n并且提供一年的维护和技术支持群，即使超过维护期使用也不受任何影响，只要在所支持的版本之内永久使用。'
 
   const proPrice = '￥1200<span class="price-unit">/发布版</span>、￥2800<span class="price-unit">/源码</span>'
   document.getElementById('proTitle').innerHTML = `<span>pro 专业版</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
@@ -89,6 +89,10 @@
       name: 'proMultiArea'
     },
     {
+      title: '固定列区域选取',
+      name: 'proFixedAera'
+    },
+    {
       title: '方向键、Tab 键、回车键',
       name: 'proKeyboard'
     },
@@ -99,10 +103,6 @@
     {
       title: '合并、取消合并',
       name: 'proMerge'
-    },
-    {
-      title: '固定列区域选取',
-      name: 'proFixedAera'
     },
     {
       title: '查找和替换',

@@ -89,6 +89,10 @@
       name: 'proMultiArea'
     },
     {
+      title: '固定列区域选取',
+      name: 'proFixedAera'
+    },
+    {
       title: '方向键、Tab 键、回车键',
       name: 'proKeyboard'
     },
@@ -99,10 +103,6 @@
     {
       title: '合并、取消合并',
       name: 'proMerge'
-    },
-    {
-      title: '固定列区域选取',
-      name: 'proFixedAera'
     },
     {
       title: '查找和替换',
