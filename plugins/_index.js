@@ -5,7 +5,7 @@
       <div class="header">
         <div class="title">
           <i id="proBase" class="help-icon" title="${item.features.replace(/"/g, '\'')}">?</i>
-          <a id="${item.name}" class="link demo-link">${item.title}</a>
+          <a id="${item.name}" class="demo-link">${item.title}</a>
           <span class="price">（￥${item.price}）</span>
           <i class="price-icon">!</i>
         </div>
@@ -21,18 +21,6 @@
       html += createItem(item)
     })
     return html
-  }
-
-  var videoWrapperElem = document.getElementById('previewVideo')
-
-  function openVideo (name) {
-    videoWrapperElem.className = 'preview-video-wrapper is-visible'
-    videoWrapperElem.innerHTML = `<video id="previewVideo" src="./${name}.mp4" controls="controls" autoplay></video>`
-  }
-
-  function closeVideo () {
-    videoWrapperElem.className = 'preview-video-wrapper'
-    videoWrapperElem.innerHTML = ''
   }
 
   const defPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；'
@@ -204,18 +192,6 @@
   //   }
   // ]
   // document.getElementById('editWrapper').innerHTML = createList(editList)
-
-  Array.from(document.querySelectorAll('.preview-list .demo-link')).forEach(function (imgElem) {
-    imgElem.onclick = function () {
-      openVideo(imgElem.id)
-    }
-  })
-
-  videoWrapperElem.onclick = function (event) {
-    if (event.target === videoWrapperElem) {
-      closeVideo()
-    }
-  }
 
   Array.from(document.querySelectorAll('.price-icon')).forEach(function (iconElem) {
     if (!iconElem.title) {
