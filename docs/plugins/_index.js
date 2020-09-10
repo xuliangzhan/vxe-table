@@ -24,7 +24,7 @@
   }
 
   const defPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；'
-  const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；\n并且提供一年的维护和技术支持群，即使超过维护期使用也不受任何影响，只要在所支持的版本之内永久使用。'
+  const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；\n并且提供一年的维护和技术支持，即使超过维护期使用也不受任何影响，只要在所支持的版本之内永久使用。'
 
   const proPrice = '￥1200<span class="price-unit">-发布版</span>、￥2800<span class="price-unit">-源码</span>'
   document.getElementById('proTitle').innerHTML = `<span>pro 专业版</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
@@ -49,7 +49,7 @@
       '支持 Ctrl+F 查找数据，全表或指定区域查找数据',
       '支持 Ctrl+H 替换数据，全表或指定区域替换数据',
       '支持 Arrow Up 如果存在，则移动到上面的单元格',
-      '支持 Arrow Down  如果存在，则移动到下面的单元格',
+      '支持 Arrow Down 如果存在，则移动到下面的单元格',
       '支持 Arrow Left 如果存在，则移动到左边的单元格',
       '支持 Arrow Right 如果存在，则移动到右边的单元格',
       '支持 Tab 如果存在，则移动到右边单元格；如果存在区域，则在指定区域内移动；如果移动到最后一列，则从下一行开始移到，以此循环',
