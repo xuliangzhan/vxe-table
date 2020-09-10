@@ -8,7 +8,7 @@
     <script>
       var _hmt = _hmt || [];
       (function() {
-        if (location.host.indexOf('localhost') === -1) {
+        if (location.protocol.indexOf('http') > -1 && location.host.indexOf('localhost') === -1) {
           var hm = document.createElement("script");
           hm.src = "https://hm.baidu.com/hm.js?bb92c84d2dff18210f9be4cf2aa28fee";
           hm.onload = function () {
