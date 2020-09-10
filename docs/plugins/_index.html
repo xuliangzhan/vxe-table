@@ -11,13 +11,6 @@
         if (location.protocol.indexOf('http') > -1 && location.host.indexOf('localhost') === -1) {
           var hm = document.createElement("script");
           hm.src = "https://hm.baidu.com/hm.js?3020a21f574897154c6cd9dec04577a9";
-          hm.onload = function () {
-            _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
-              shouldTrackUrlChange: function (newPath, oldPath) {
-              return newPath && oldPath;
-              }}
-            ]);
-          }
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
         }
