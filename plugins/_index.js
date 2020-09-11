@@ -81,10 +81,6 @@
       name: 'proFixedAera'
     },
     {
-      title: '方向键、Tab 键、回车键',
-      name: 'proKeyboard'
-    },
-    {
       title: '复制、剪贴、粘贴',
       name: 'proClip'
     },
@@ -97,20 +93,24 @@
       name: 'proFNR'
     },
     {
-      title: '区域选取、虚拟滚动',
-      name: 'proVirtualScroll'
+      title: '更多实用的快捷键',
+      name: 'proKeyboard'
     },
     {
-      title: '区域选取、虚拟滚动、虚拟合并',
-      name: 'proVirtualMergeScroll'
-    },
-    {
-      title: '丰富的快捷菜单',
+      title: '更多实用的快捷菜单',
       name: 'proContextmenu'
     },
     {
-      title: '支持 echarts 图表渲染',
+      title: '集成 echarts 图表渲染',
       name: 'proCharts'
+    },
+    {
+      title: '同时支持区域选取、虚拟滚动',
+      name: 'proVirtualScroll'
+    },
+    {
+      title: '同时支持区域选取、虚拟滚动、虚拟合并',
+      name: 'proVirtualMergeScroll'
     }
   ]
 
