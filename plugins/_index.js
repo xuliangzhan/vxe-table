@@ -143,7 +143,7 @@
         '支持匹配已关键字结尾',
         '支持匹配空值'
       ].join('\n'),
-      price: '100<span class="price-unit">-源码</span>'
+      price: '50<span class="price-unit">-源码</span>'
     },
     {
       name: 'FilterCombination',
