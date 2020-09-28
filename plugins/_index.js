@@ -27,7 +27,7 @@
   const proPriceHelp = '购买授权后可用于个人、商用项目中，无任何限制，永久授权；\n并且提供一年的维护和技术支持，即使超过维护期使用也不受任何影响，只要在所支持的版本之内永久使用。'
 
   const proPrice = '￥1200<span class="price-unit">-发布版</span></span>'
-  document.getElementById('proTitle').innerHTML = `<span>pro 专业版</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
+  document.getElementById('proTitle').innerHTML = `<span>pro</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
   document.getElementById('proPriceHelp').title = proPriceHelp
 
   const proFeatures = {
@@ -132,9 +132,9 @@
   var filterList = [
     {
       name: 'FilterComplexInput',
-      title: '高级匹配',
+      title: '筛选内容',
       features: [
-        '高级匹配：',
+        '筛选内容：',
         '支持固定列',
         '支持回车筛选',
         '支持关键字模糊匹配',
