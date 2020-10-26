@@ -12,7 +12,8 @@ export default {
     tableGroupColumn: Array,
     fixedColumn: Array,
     size: String,
-    fixedType: String
+    fixedType: String,
+    useCustomHeaderRowSpan: Boolean
   },
   data () {
     return {
@@ -126,7 +127,7 @@ export default {
             if (mouseConfig) {
               thOns.mousedown = evnt => $xetable.triggerHeaderCellMousedownEvent(evnt, params)
             }
-            return h('th', {
+            const thdef = {
               class: ['vxe-header--column', column.id, {
                 [`col--${headAlign}`]: headAlign,
                 [`col--${type}`]: type,
@@ -148,7 +149,8 @@ export default {
               style: headerCellStyle ? (XEUtils.isFunction(headerCellStyle) ? headerCellStyle(params) : headerCellStyle) : null,
               on: thOns,
               key: columnKey || isColGroup ? column.id : $columnIndex
-            }, [
+            }
+            return h('th', thdef, [
               h('div', {
                 class: ['vxe-cell', {
                   'c--title': showTitle,
@@ -187,7 +189,7 @@ export default {
   methods: {
     uploadColumn () {
       const { $parent: $xetable } = this
-      this.headerColumn = $xetable.isGroup ? convertToRows(this.tableGroupColumn) : [$xetable.scrollXLoad && this.fixedType ? this.fixedColumn : this.tableColumn]
+      this.headerColumn = $xetable.isGroup ? convertToRows(this.useCustomHeaderRowSpan, this.tableGroupColumn) : [$xetable.scrollXLoad && this.fixedType ? this.fixedColumn : this.tableColumn]
     },
     resizeMousedown (evnt, params) {
       const { column } = params

@@ -17,7 +17,7 @@ const { browse } = DomTools
  * @param {String} fixedType 固定列类型
  */
 function renderFixed (h, $xetable, fixedType) {
-  const { tableData, tableColumn, tableGroupColumn, vSize, showHeader, showFooter, columnStore, footerData } = $xetable
+  const { tableData, tableColumn, tableGroupColumn, useCustomHeaderRowSpan, vSize, showHeader, showFooter, columnStore, footerData } = $xetable
   const fixedColumn = columnStore[`${fixedType}List`]
   const tableChilds = []
   if (showHeader) {
@@ -28,6 +28,7 @@ function renderFixed (h, $xetable, fixedType) {
           tableData,
           tableColumn,
           tableGroupColumn,
+          useCustomHeaderRowSpan,
           size: vSize,
           fixedColumn
         },
@@ -75,6 +76,8 @@ export default {
     id: String,
     // 数据
     data: Array,
+    // 使用自定义表头合并方式
+    useCustomHeaderRowSpan: { type: Boolean, default: () => false },
     // 表格的高度
     height: [Number, String],
     // 表格的最大高度
@@ -796,7 +799,8 @@ export default {
       footerData,
       hasTip,
       emptyRender,
-      emptyOpts
+      emptyOpts,
+      useCustomHeaderRowSpan
     } = this
     const tableChilds = []
     const fixedChilds = []
@@ -822,6 +826,7 @@ export default {
             tableData,
             tableColumn,
             tableGroupColumn,
+            useCustomHeaderRowSpan,
             size: vSize
           }
         })

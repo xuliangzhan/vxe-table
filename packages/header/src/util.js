@@ -14,7 +14,7 @@ const getAllColumns = (columns, parentColumn) => {
   return result
 }
 
-export const convertToRows = (originColumns) => {
+export const convertToRows = (useCustomRowSpan, originColumns) => {
   let maxLevel = 1
   const traverse = (column, parent) => {
     if (parent) {
@@ -49,13 +49,47 @@ export const convertToRows = (originColumns) => {
 
   const allColumns = getAllColumns(originColumns)
 
-  allColumns.forEach((column) => {
-    if (column.children && column.children.length && column.children.some(column => column.visible)) {
-      column.rowSpan = 1
-    } else {
-      column.rowSpan = maxLevel - column.level + 1
+  const getGroupParentRowSpan = (columnId) => {
+    let r = 0
+    for (let i = 0; i < allColumns.length; i++) {
+      const column = allColumns[i]
+      if (column.id === columnId) {
+        if (column.rowSpan && column.rowSpan > 1) {
+          r = r + column.rowSpan
+        }
+        if (column.parentId) {
+          r = r + getGroupParentRowSpan(column.parentId)
+        }
+      }
     }
-    rows[column.level - 1].push(column)
+    return r
+  }
+
+  allColumns.forEach((column) => {
+    if (useCustomRowSpan) {
+      if (column.customRowSpan) {
+        column.rowSpan = column.customRowSpan
+      } else {
+        column.rowSpan = 1
+      }
+      let alevel = column.level - 1
+      if (column.parentId) {
+        let parentRowSpan = getGroupParentRowSpan(column.parentId)
+        parentRowSpan = parentRowSpan > 0 ? parentRowSpan - 1 : 0
+        alevel = alevel + parentRowSpan
+        if (alevel >= maxLevel) {
+          alevel = maxLevel - 1
+        }
+      }
+      rows[alevel].push(column)
+    } else {
+      if (column.children && column.children.length && column.children.some(column => column.visible)) {
+        column.rowSpan = 1
+      } else {
+        column.rowSpan = maxLevel - column.level + 1
+      }
+      rows[column.level - 1].push(column)
+    }
   })
 
   return rows
