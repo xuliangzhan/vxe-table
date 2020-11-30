@@ -10,7 +10,7 @@
           <i class="price-icon">!</i>
         </div>
       </div>
-      <img class="preview-img" src="./${item.name}.png">
+      <img class="preview-img" src="./${item.name}.gif">
     </li>
     `
   }
@@ -23,17 +23,14 @@
     return html
   }
 
-  const defPriceHelp = '购买授权后可用于个人、多项目、商用项目中，永久授权'
-  const proPriceHelp = '购买授权后可用于个人、多项目、商用项目中，永久授权，提供技术支持群'
+  const defPriceHelp = '购买授权后可用于个人或商用项目中，永久授权'
+  const proPriceHelp = '购买授权后可用于个人或商用项目中，永久授权，提供技术支持群'
 
   const proPrice = '￥1000<span class="price-unit">-发布版</span></span>'
-  document.getElementById('proTitle').innerHTML = `<span>pro</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
+  document.getElementById('proTitle').innerHTML = `<span>PRO</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
   document.getElementById('proPriceHelp').title = proPriceHelp
 
   const proFeatures = {
-    base: [
-      '支持区域选取功能与虚拟滚动、合并、固定列同时使用'
-    ].join('\n'),
     mouse: [
       '支持 MouseLeft 选取选取指定区域的单元格',
       '支持 Ctrl + MouseLeft 选取多重区域的单元格',
@@ -66,8 +63,7 @@
       '支持 Esc 键取消激活当前活动的单元格'
     ].join('\n')
   }
-  document.getElementById('proDesc').innerHTML = '<i id="proBase" class="help-icon">?</i>增强功能、<i id="proMouse" class="help-icon">?</i>鼠标操作、<i id="proKeyboard" class="help-icon">?</i>快捷键操作、更多优化中...'
-  document.getElementById('proBase').title = proFeatures.base
+  document.getElementById('proDesc').innerHTML = '<i id="proMouse" class="help-icon">?</i>鼠标操作、<i id="proKeyboard" class="help-icon">?</i>快捷键操作'
   document.getElementById('proMouse').title = proFeatures.mouse
   document.getElementById('proKeyboard').title = proFeatures.keyboard
 
