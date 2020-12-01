@@ -70,6 +70,18 @@ body {
   padding: 10px 20px;
 }
 
+.pro-preview,
+.filter-preview {
+  display: flex;
+  flex-direction: row;
+  padding-right: 200px;
+}
+
+.auth-list {
+  width: 200px;
+  background-color: #fff;
+}
+
 .preview-title {
   font-size: 18px;
   font-weight: 700;

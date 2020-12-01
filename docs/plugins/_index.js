@@ -27,7 +27,7 @@
   const proPriceHelp = '购买授权后可用于个人或商用项目中，永久授权，提供技术支持群'
 
   const proPrice = '￥1000<span class="price-unit">-发布版</span></span>'
-  document.getElementById('proTitle').innerHTML = `<span>PRO</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!</i>`
+  document.getElementById('proTitle').innerHTML = `<span>PRO</span><span class="price">（${proPrice}）</span><i id="proPriceHelp" class="price-icon">!<a href="auth.html">查询授权</a></i>`
   document.getElementById('proPriceHelp').title = proPriceHelp
 
   const proFeatures = {
