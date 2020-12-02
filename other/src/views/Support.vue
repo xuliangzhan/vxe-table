@@ -95,8 +95,8 @@ export default {
       background-color: #F5F7FA;
       vertical-align: middle;
       outline: 0;
-      cursor: pointer;
-      &:not(.disabled) {
+      &:not(.is-disabled) {
+        cursor: pointer;
         &:hover {
           color: #3196ff;
         }
@@ -104,7 +104,7 @@ export default {
           border-color: #3196ff;
         }
       }
-      &.disabled {
+      &.is-disabled {
         color: #BFBFBF;
       }
     }
