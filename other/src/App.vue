@@ -17,10 +17,11 @@
         </a>
       </div>
       <div class="right">
-        <span class="get-contact">如有需要，可联系邮件获取授权：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></span>
+        <span class="get-contact">定制化插件或购买授权，如有需要，联系邮件：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></span>
       </div>
     </div>
     <div class="page-nav">
+      <router-link :to="{name: 'Support'}">技术支持群</router-link> |
       <router-link :to="{name: 'Pro'}">PRO扩展</router-link> |
       <router-link :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
       <router-link :to="{name: 'Filter'}">筛选扩展</router-link>

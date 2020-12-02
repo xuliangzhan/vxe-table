@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Support from '../views/Support.vue'
 import Pro from '../views/Pro.vue'
 import ProLog from '../views/ProLog.vue'
 import ProAuth from '../views/ProAuth.vue'
@@ -11,8 +12,13 @@ const routes = [
   {
     path: '/',
     redirect: {
-      name: 'Pro'
+      name: 'Support'
     }
+  },
+  {
+    path: '/support',
+    name: 'Support',
+    component: Support
   },
   {
     path: '/pro',

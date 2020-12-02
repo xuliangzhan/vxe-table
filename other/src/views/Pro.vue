@@ -2,7 +2,7 @@
   <div class="pro-page">
     <div class="pro-desc">
       <div class="pro-price">
-        <span style="font-size: 20px;font-weight: 700;">PRO</span><span style="font-size: 12px"> -发布版</span><span class="price-unit">￥1000</span><span style="font-size: 12px">/永久</span>
+        <span style="font-size: 20px;font-weight: 700;">PRO</span><span style="font-size: 12px"> -发布版</span><span class="price-unit">￥1000</span><span style="font-size: 12px">/永久 + 支持群</span>
       </div>
       <div class="pro-features">
         <span><i class="help-icon" :title="proFeatures.mouse">?</i>鼠标操作</span>
