@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? '/vxe-table/plugins/' : '/',
   outputDir: '../plugins',
   assetsDir: 'static',
   pages: {
