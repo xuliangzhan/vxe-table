@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Pro from '../views/Pro.vue'
+import ProLog from '../views/ProLog.vue'
 import ProAuth from '../views/ProAuth.vue'
 import Filter from '../views/Filter.vue'
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/pro',
     name: 'Pro',
     component: Pro
+  },
+  {
+    path: '/proLog',
+    name: 'ProLog',
+    component: ProLog
   },
   {
     path: '/proAuth',

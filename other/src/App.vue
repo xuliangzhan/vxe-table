@@ -16,13 +16,18 @@
           <img src="https://img.shields.io/npm/dm/vxe-table.svg">
         </a>
       </div>
+      <div class="right">
+        <span class="get-contact">如有需要，可联系邮件获取授权：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></span>
+      </div>
     </div>
     <div class="page-nav">
       <router-link :to="{name: 'Pro'}">PRO扩展</router-link> |
       <router-link :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
       <router-link :to="{name: 'Filter'}">筛选扩展</router-link>
     </div>
-    <router-view/>
+    <div class="page-body">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -30,6 +35,9 @@
 *, :after, :before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+html, body {
+  height: 100%;
 }
 body {
   margin: 0;
@@ -45,9 +53,14 @@ img {
   vertical-align: middle;
   border-style: none;
 }
-
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .page-header {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   height: 44px;
   color: #fff;
@@ -59,6 +72,20 @@ img {
     font-size: 22px;
     flex-shrink: 0;
   }
+  & > .right {
+    flex-grow: 1;
+    text-align: right;
+  }
+  .get-contact {
+    color: #f6ca9d;
+    .link {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
   .title {
     padding: 0 0.4em;
     font-weight: 700;
@@ -69,6 +96,7 @@ img {
   padding: 20px;
   text-align: center;
   font-size: 16px;
+  flex-shrink: 0;
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -77,5 +105,10 @@ img {
       color: #42b983;
     }
   }
+}
+.page-body {
+  height: 100%;
+  overflow: auto;
+  flex-grow: 1;
 }
 </style>

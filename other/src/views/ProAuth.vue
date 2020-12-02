@@ -11,6 +11,9 @@
           <div class="item-date">授权时间：{{ item.date }}</div>
         </div>
       </div>
+      <div v-if="!list.length" class="no-data">
+        <span>可能授权码不正确，找不到对应的记录！</span>
+      </div>
     </div>
   </div>
 </template>
@@ -105,6 +108,10 @@ export default {
   }
   .item-date {
     padding: 15px;
+  }
+  .no-data {
+    text-align: center;
+    line-height: 2em;
   }
 }
 </style>

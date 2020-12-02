@@ -7,6 +7,7 @@
       <div class="pro-features">
         <span><i class="help-icon" :title="proFeatures.mouse">?</i>鼠标操作</span>
         <span><i class="help-icon" :title="proFeatures.keyboard">?</i>按键操作</span>
+        <router-link class="update-log" :to="{name: 'ProLog'}">更新日志</router-link>
       </div>
     </div>
     <div class="pro-preview">
@@ -143,6 +144,14 @@ export default {
   position: absolute;
   top: 20px;
   right: 25px;
+  .update-log {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #606266;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 .help-icon {
   display: inline-block;

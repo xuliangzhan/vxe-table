@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: '../docs/plugins',
+  outputDir: '../plugins',
   assetsDir: 'static',
   pages: {
     index: {
