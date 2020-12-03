@@ -18,6 +18,7 @@
           </li>
           <li>下方扫码付款 <span class="price-unit">￥{{ disabledSupport ? '-' : supportPrice }}</span></li>
           <li>付款完成后，点击联系收款方，留言QQ号</li>
+          <li style="font-size: 12px">如有疑问，联系邮件：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></li>
         </ul>
         <div class="btn-wrapper">
           <button v-if="disabledSupport" class="pay-btn is-disabled" type="button" title="当前不在支持的时间之内，工作日：9:30 ~ 18:00">确认扫码付款</button>

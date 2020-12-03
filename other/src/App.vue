@@ -24,7 +24,8 @@
       <router-link :to="{name: 'Support'}">技术支持群</router-link> |
       <router-link :to="{name: 'Pro'}">PRO扩展</router-link> |
       <router-link :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
-      <router-link :to="{name: 'Filter'}">筛选扩展</router-link>
+      <router-link :to="{name: 'Filter'}">筛选扩展</router-link> |
+      <router-link :to="{name: 'Edit'}">编辑扩展</router-link>
     </div>
     <div class="page-body">
       <router-view/>
@@ -54,6 +55,12 @@ img {
   vertical-align: middle;
   border-style: none;
 }
+.link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 #app {
   height: 100%;
   display: flex;
@@ -79,17 +86,13 @@ img {
   }
   .get-contact {
     color: #f6ca9d;
-    .link {
-      color: #fff;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
   .title {
     padding: 0 0.4em;
     font-weight: 700;
+    color: #fff;
+  }
+  .link {
     color: #fff;
   }
 }
