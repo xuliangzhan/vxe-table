@@ -1,5 +1,6 @@
 <template>
   <div class="support-page">
+    <h2 class="support-title">申请加入付费技术支持群<span style="font-size: 12px;font-weight: 400;">（快速解决使用过程中遇到的问题）</span></h2>
     <div class="support-group">
       <div class="qq-img">
         <img v-if="disabledSupport" src="" width="190" height="190">
@@ -8,7 +9,7 @@
       <div class="qq-step">
         <ul class="step-wrapper">
           <li>
-            左侧扫码 或者 点击
+            左侧扫码申请加入群 或 点击
             <template v-if="disabledSupport">
               <a class="is-disabled"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="vxe-table 技术支持群" title="vxe-table 技术支持群"></a>
             </template>
@@ -17,7 +18,7 @@
             </template>
           </li>
           <li>下方扫码付款 <span class="price-unit">￥{{ disabledSupport ? '-' : supportPrice }}</span></li>
-          <li>付款完成后，点击联系收款方，留言QQ号</li>
+          <li>付款完成后，点击“联系收款方”，留言QQ号</li>
           <li style="font-size: 12px">如有疑问，联系邮件：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></li>
         </ul>
         <div class="btn-wrapper">
@@ -62,6 +63,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.support-title {
+    text-align: center;
+}
 .price-unit {
   font-size: 18px;
   color: #ff6700;
@@ -96,6 +100,7 @@ export default {
       background-color: #F5F7FA;
       vertical-align: middle;
       outline: 0;
+      user-select: none;
       &:not(.is-disabled) {
         cursor: pointer;
         &:hover {
