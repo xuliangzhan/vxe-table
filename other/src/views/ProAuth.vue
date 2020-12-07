@@ -4,6 +4,12 @@
       <input class="form-input" v-model="formData.code" type="search" placeholder="请输入授权码查询">
       <button class="form-button" type="button" @click="searchEvent">搜索</button>
     </div>
+    <div class="proauth-pager">
+      <div class="pager-btns">
+        <button class="prev-page-btn" :disabled="pageVO.currentPage <= 1" title="上一页">&lt;</button>
+        <button class="next-page-btn" :disabled="pageVO.currentPage >= pageVO.pageCount" title="下一页">&gt;</button>
+      </div>
+    </div>
     <div class="proauth-list">
       <div class="proauth-item" v-for="(item, index) in list" :key="index">
         <div class="proauth-content">
@@ -22,6 +28,12 @@
 export default {
   data () {
     return {
+      pageVO: {
+        currentPage: 1,
+        pageSize: 10,
+        total: 0,
+        pageCount: 1
+      },
       formData: {
         code: ''
       },
@@ -30,9 +42,23 @@ export default {
   },
   methods: {
     searchEvent () {
-      fetch('https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/10/1?authCode=' + this.formData.code).then(response => response.json()).then(data => {
+      fetch(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?authCode=${this.formData.code}`).then(response => response.json()).then(data => {
         this.list = data.result
+        this.pageVO.total = data.page.total
+        this.pageVO.pageCount = Math.max(Math.ceil(this.pageVO.total / this.pageVO.pageSize), 1)
       })
+    },
+    prevEvent () {
+      if (this.pageVO.currentPage > 1) {
+        this.pageVO.currentPage--
+        this.searchEvent()
+      }
+    },
+    nextEvent () {
+      if (this.pageVO.currentPage < this.pageVO.pageCount) {
+        this.pageVO.currentPage++
+        this.searchEvent()
+      }
     }
   }
 }
@@ -69,6 +95,38 @@ export default {
     }
     &:active {
       border-color: #3196ff;
+    }
+  }
+}
+.proauth-pager {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: right;
+  .pager-btns {
+    display: inline-block;
+    padding: 0 5px;
+  }
+  .prev-page-btn,
+  .next-page-btn {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #dcdfe6;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 5px;
+    outline: 0;
+    &[disabled] {
+      cursor: no-drop;
+    }
+    &:not([disabled]) {
+      cursor: pointer;
+      &:hover {
+        color: #3196ff;
+      }
+      &:active {
+        border-color: #3196ff;
+      }
     }
   }
 }
