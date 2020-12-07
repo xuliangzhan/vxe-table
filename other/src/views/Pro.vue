@@ -145,9 +145,11 @@ export default {
   top: 20px;
   right: 25px;
   .update-log {
+    font-weight: 700;
+    font-size: 16px;
     margin-left: 15px;
     text-decoration: none;
-    color: #606266;
+    color: #409eff;
     &:hover {
       text-decoration: underline;
     }

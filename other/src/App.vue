@@ -33,6 +33,23 @@
   </div>
 </template>
 
+<script>
+import XEAjax from 'xe-ajax'
+
+XEAjax.interceptors.request.use((request, next) => {
+  request.headers.set('path', location.href)
+  request.headers.set('name', 'vxe-table-pro')
+  request.headers.set('now', Date.now())
+  next()
+})
+
+export default {
+  data () {
+    return {}
+  }
+}
+</script>
+
 <style lang="scss">
 *, :after, :before {
   -webkit-box-sizing: border-box;

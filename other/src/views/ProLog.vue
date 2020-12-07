@@ -1,5 +1,8 @@
 <template>
   <div class="log-page">
+    <!-- <div class="download-btns">
+      <a class="link download-lib" @click="downloadEvent">下载 {{ downVersion }}</a>
+    </div> -->
     <div class="log-item" v-for="(item, index) in list" :key="index">
       <div class="log-version">
         <span class="log-name">v{{ item.version }}</span>
@@ -15,10 +18,21 @@
 </template>
 
 <script>
+import XEAjax from 'xe-ajax'
+import XEUtils from 'xe-utils'
+
 export default {
   data () {
     return {
+      downVersion: '1.0.7',
       list: [
+        {
+          version: '1.0.7',
+          date: '2020-12-06',
+          logs: [
+            '修复点击列头选取整列后未定位到第一行问题'
+          ]
+        },
         {
           version: '1.0.6',
           date: '2020-12-01',
@@ -83,6 +97,41 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    downloadEvent () {
+      const code = prompt(decodeURIComponent('%E8%AF%B7%E8%BE%93%E5%85%A5%E6%8E%88%E6%9D%83%E7%A0%81'))
+      if (code) {
+        const strs = 'wabpcdoefghijklmnzyt'.split('')
+        const params = {}
+        XEUtils.sample(strs, 10).forEach(key => {
+          params[key] = XEUtils.random(10, 999)
+        })
+        XEAjax.fetchPost(`https://api.xuliangzhan.com:10443/api/pub/pro/download/${this.downVersion}/${code}`, {
+          n: Date.now(),
+          l: 'pro',
+          c: code
+        }).then(response => {
+          if (response.status === 200) {
+            response.blob().then(blob => {
+              const a = document.createElement('a')
+              a.target = '_blank'
+              a.download = `vxe-table-pro${this.downVersion}.rar`
+              a.href = URL.createObjectURL(blob)
+              document.body.appendChild(a)
+              a.click()
+              document.body.removeChild(a)
+            })
+          } else {
+            response.json().then(data => {
+              if (data) {
+                alert(data.message)
+              }
+            })
+          }
+        })
+      }
+    }
   }
 }
 </script>
@@ -109,5 +158,20 @@ export default {
   .log-li {
     list-style-type: circle;
   }
+}
+.download-btns {
+  width: 800px;
+  margin: 0 auto;
+  text-align: right;
+}
+.download-lib {
+  display: inline-block;
+  color: #fff;
+  border-color: #409eff;
+  background-color: #409eff;
+  border-radius: 4px;
+  padding: 5px 15px;
+  font-size: 12px;
+  cursor: pointer;
 }
 </style>

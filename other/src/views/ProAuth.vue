@@ -3,6 +3,7 @@
     <div class="proauth-form">
       <input class="form-input" v-model="formData.code" type="search" placeholder="请输入授权码查询">
       <button class="form-button" type="button" @click="searchEvent">搜索</button>
+      <router-link class="update-log" :to="{name: 'ProLog'}">更新日志</router-link>
     </div>
     <div class="proauth-pager">
       <div class="pager-btns">
@@ -95,6 +96,15 @@ export default {
     }
     &:active {
       border-color: #3196ff;
+    }
+  }
+  .update-log {
+    font-weight: 700;
+    margin-left: 25px;
+    text-decoration: none;
+    color: #409eff;
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
