@@ -24,8 +24,15 @@ import XEUtils from 'xe-utils'
 export default {
   data () {
     return {
-      downVersion: '1.0.7',
+      downVersion: '1.0.8',
       list: [
+        {
+          version: '1.0.8',
+          date: '2020-12-07',
+          logs: [
+            '修复筛选弹出后复制与粘贴冲突问题'
+          ]
+        },
         {
           version: '1.0.7',
           date: '2020-12-06',
