@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import XEAjax from 'xe-ajax'
+
 export default {
   data () {
     return {
@@ -43,7 +45,7 @@ export default {
   },
   methods: {
     searchEvent () {
-      fetch(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?authCode=${this.formData.code}`).then(response => response.json()).then(data => {
+      XEAjax.get(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?authCode=${this.formData.code}`).then(data => {
         this.list = data.result
         this.pageVO.total = data.page.total
         this.pageVO.pageCount = Math.max(Math.ceil(this.pageVO.total / this.pageVO.pageSize), 1)
