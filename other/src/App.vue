@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="page-nav">
-      <router-link :to="{name: 'Support'}">技术支持群</router-link> |
+      <router-link :to="{name: 'Support'}">技术支持</router-link> |
       <router-link :to="{name: 'Pro'}">PRO扩展</router-link> |
       <router-link :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
       <router-link :to="{name: 'Filter'}">筛选扩展</router-link> |

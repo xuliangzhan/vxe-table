@@ -27,6 +27,15 @@ export default {
       downVersion: '1.0.8',
       list: [
         {
+          version: '1.0.9',
+          date: '2020-12-09',
+          logs: [
+            '修复粘贴 Excel 数据错误问题',
+            '修复单元格格式化值无法复制问题',
+            '修复复选框、单选框无法复制粘贴问题'
+          ]
+        },
+        {
           version: '1.0.8',
           date: '2020-12-07',
           logs: [
