@@ -1,8 +1,13 @@
 <template>
   <div class="log-page">
     <div class="download-btns" v-if="$route.path === '/prodl'">
-      <a class="link download-lib" @click="downloadEvent(downNewVersion)">最新版 {{ downNewVersion }}</a>
-      <a class="link download-lib" @click="downloadEvent(downStableVersion)">稳定版 {{ downStableVersion }}</a>
+      <template v-if="downNewVersion === downStableVersion">
+        <a class="link download-lib" @click="downloadEvent(downStableVersion)">稳定版 {{ downStableVersion }}</a>
+      </template>
+      <template v-else>
+        <a class="link download-lib" @click="downloadEvent(downNewVersion)">最新版 {{ downNewVersion }}</a>
+        <a class="link download-lib" @click="downloadEvent(downStableVersion)">稳定版 {{ downStableVersion }}</a>
+      </template>
     </div>
     <div class="log-item" v-for="(item, index) in list" :key="index">
       <div class="log-version">
@@ -25,10 +30,17 @@ import XEUtils from 'xe-utils'
 export default {
   data () {
     return {
-      downNewVersion: '1.0.9',
-      downStableVersion: '1.0.8',
+      downNewVersion: '1.0.10',
+      downStableVersion: '1.0.10',
       invalidCode: [],
       list: [
+        {
+          version: '1.0.10',
+          date: '2020-12-09',
+          logs: [
+            '修复查找与粘贴输入框在 v3 中无法输入问题'
+          ]
+        },
         {
           version: '1.0.9',
           date: '2020-12-09',
