@@ -3,11 +3,11 @@
     <div class="pro-desc">
       <div class="pro-price">
         <span style="font-size: 20px;font-weight: 700;">PRO</span><span style="font-size: 12px"> -发布版</span><span class="price-unit">￥1000</span><span style="font-size: 12px">/永久 + 支持群</span>
+        <router-link class="update-log" :to="{name: 'ProLog'}">更新日志</router-link>
       </div>
       <div class="pro-features">
         <span><i class="help-icon" :title="proFeatures.mouse">?</i>鼠标操作</span>
         <span><i class="help-icon" :title="proFeatures.keyboard">?</i>按键操作</span>
-        <router-link class="update-log" :to="{name: 'ProLog'}">更新日志</router-link>
       </div>
     </div>
     <div class="pro-preview">
@@ -140,20 +140,20 @@ export default {
   box-shadow: 1px 2px 10px #eee;
   background-color: #fff;
 }
+.update-log {
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 15px;
+  text-decoration: none;
+  color: #409eff;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 .pro-features {
   position: absolute;
   top: 20px;
   right: 25px;
-  .update-log {
-    font-weight: 700;
-    font-size: 16px;
-    margin-left: 15px;
-    text-decoration: none;
-    color: #409eff;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 .help-icon {
   display: inline-block;

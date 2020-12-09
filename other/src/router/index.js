@@ -38,6 +38,11 @@ const routes = [
     component: ProLog
   },
   {
+    path: '/prodl',
+    name: 'Prodl',
+    component: ProLog
+  },
+  {
     path: '/proAuth',
     name: 'ProAuth',
     component: ProAuth

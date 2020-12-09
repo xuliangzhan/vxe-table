@@ -1,8 +1,9 @@
 <template>
   <div class="log-page">
-    <!-- <div class="download-btns">
-      <a class="link download-lib" @click="downloadEvent">下载 {{ downVersion }}</a>
-    </div> -->
+    <div class="download-btns" v-if="$route.path === '/prodl'">
+      <a class="link download-lib" @click="downloadEvent(downNewVersion)">最新版 {{ downNewVersion }}</a>
+      <a class="link download-lib" @click="downloadEvent(downStableVersion)">稳定版 {{ downStableVersion }}</a>
+    </div>
     <div class="log-item" v-for="(item, index) in list" :key="index">
       <div class="log-version">
         <span class="log-name">v{{ item.version }}</span>
@@ -24,7 +25,8 @@ import XEUtils from 'xe-utils'
 export default {
   data () {
     return {
-      downVersion: '1.0.8',
+      downNewVersion: '1.0.9',
+      downStableVersion: '1.0.8',
       list: [
         {
           version: '1.0.9',
@@ -115,37 +117,39 @@ export default {
     }
   },
   methods: {
-    downloadEvent () {
-      const code = prompt(decodeURIComponent('%E8%AF%B7%E8%BE%93%E5%85%A5%E6%8E%88%E6%9D%83%E7%A0%81'))
-      if (code) {
-        const strs = 'wabpcdoefghijklmnzyt'.split('')
-        const params = {}
-        XEUtils.sample(strs, 10).forEach(key => {
-          params[key] = XEUtils.random(10, 999)
-        })
-        XEAjax.fetchPost(`https://api.xuliangzhan.com:10443/api/pub/pro/download/${this.downVersion}/${code}`, {
-          n: Date.now(),
-          l: 'pro',
-          c: code
-        }).then(response => {
-          if (response.status === 200) {
-            response.blob().then(blob => {
-              const a = document.createElement('a')
-              a.target = '_blank'
-              a.download = `vxe-table-pro${this.downVersion}.rar`
-              a.href = URL.createObjectURL(blob)
-              document.body.appendChild(a)
-              a.click()
-              document.body.removeChild(a)
-            })
-          } else {
-            response.json().then(data => {
-              if (data) {
-                alert(data.message)
-              }
-            })
-          }
-        })
+    downloadEvent (downVersion) {
+      if (this.$route.path === '/prodl') {
+        const code = prompt(decodeURIComponent('%E8%AF%B7%E8%BE%93%E5%85%A5%E6%8E%88%E6%9D%83%E7%A0%81'))
+        if (code) {
+          const strs = 'wabpcdoefghijklmnzyt'.split('')
+          const params = {}
+          XEUtils.sample(strs, 10).forEach(key => {
+            params[key] = XEUtils.random(10, 999)
+          })
+          XEAjax.fetchPost(`https://api.xuliangzhan.com:10443/api/pub/pro/download/${downVersion}/${code}`, {
+            n: Date.now(),
+            l: 'pro',
+            c: code
+          }, { params }).then(response => {
+            if (response.status === 200) {
+              response.blob().then(blob => {
+                const a = document.createElement('a')
+                a.target = '_blank'
+                a.download = `vxe-table-pro${downVersion}.rar`
+                a.href = URL.createObjectURL(blob)
+                document.body.appendChild(a)
+                a.click()
+                document.body.removeChild(a)
+              })
+            } else {
+              response.json().then(data => {
+                if (data) {
+                  alert(data.message)
+                }
+              })
+            }
+          })
+        }
       }
     }
   }
@@ -186,7 +190,8 @@ export default {
   border-color: #409eff;
   background-color: #409eff;
   border-radius: 4px;
-  padding: 5px 15px;
+  padding: 5px 10px;
+  margin: 0 5px;
   font-size: 12px;
   cursor: pointer;
 }

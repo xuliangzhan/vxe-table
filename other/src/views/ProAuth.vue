@@ -3,7 +3,6 @@
     <div class="proauth-form">
       <input class="form-input" v-model="formData.code" type="search" placeholder="请输入授权码查询">
       <button class="form-button" type="button" @click="searchEvent">搜索</button>
-      <router-link class="update-log" :to="{name: 'ProLog'}">更新日志</router-link>
     </div>
     <div class="proauth-pager">
       <div class="pager-btns">
@@ -45,11 +44,13 @@ export default {
   },
   methods: {
     searchEvent () {
-      XEAjax.get(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?authCode=${this.formData.code}`).then(data => {
-        this.list = data.result
-        this.pageVO.total = data.page.total
-        this.pageVO.pageCount = Math.max(Math.ceil(this.pageVO.total / this.pageVO.pageSize), 1)
-      })
+      if (this.formData.code.trim()) {
+        XEAjax.get(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?authCode=${this.formData.code}`).then(data => {
+          this.list = data.result
+          this.pageVO.total = data.page.total
+          this.pageVO.pageCount = Math.max(Math.ceil(this.pageVO.total / this.pageVO.pageSize), 1)
+        })
+      }
     },
     prevEvent () {
       if (this.pageVO.currentPage > 1) {
@@ -98,15 +99,6 @@ export default {
     }
     &:active {
       border-color: #3196ff;
-    }
-  }
-  .update-log {
-    font-weight: 700;
-    margin-left: 25px;
-    text-decoration: none;
-    color: #409eff;
-    &:hover {
-      text-decoration: underline;
     }
   }
 }
