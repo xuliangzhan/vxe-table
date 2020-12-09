@@ -3,7 +3,7 @@
     <h2 class="support-title">技术支持群<span class="price-unit">￥{{ supportPrice }}</span><span style="font-size: 12px;font-weight: 400;">（快速解决使用过程中遇到的问题）</span></h2>
     <div class="support-group">
       <template v-if="disabledSupport">
-        <div title="请在工作日 9:30 ~ 18:00 时间内申请，休假日不提供技术支持！" style="text-align: center;width: 100%">
+        <div title="当前不在支持的时间之内，请在工作日 9:30 ~ 18:00 时间内申请！" style="text-align: center;width: 100%">
           <img src="" style="width: 100px; height: 100px">
         </div>
       </template>
@@ -39,7 +39,7 @@ export default {
       const day = currDate.getDay()
       const hours = currDate.getHours()
       if (day === 0 || !((hours >= 9 && hours <= 11) || (hours >= 14 && hours <= 17) || (hours >= 19 && hours <= 21))) {
-        return false
+        return true
       }
       return false
     }
