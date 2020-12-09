@@ -18,14 +18,15 @@
       </div>
       <div class="right">
         <span class="get-contact">定制化插件或购买授权，如有需要，联系邮件：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></span>
+        <button class="pay-btn" @click="payEvent">扫码付款</button>
       </div>
     </div>
     <div class="page-nav">
-      <router-link :to="{name: 'Support'}">技术支持</router-link> |
-      <router-link :to="{name: 'Pro'}">PRO扩展</router-link> |
-      <router-link :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
-      <router-link :to="{name: 'Filter'}">筛选扩展</router-link> |
-      <router-link :to="{name: 'Edit'}">编辑扩展</router-link>
+      <router-link class="link" :to="{name: 'Support'}">技术支持</router-link> |
+      <router-link class="link" :to="{name: 'Pro'}">PRO扩展</router-link> |
+      <router-link class="link" :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
+      <router-link class="link" :to="{name: 'Filter'}">筛选扩展</router-link> |
+      <router-link class="link" :to="{name: 'Edit'}">编辑扩展</router-link>
     </div>
     <div class="page-body">
       <router-view/>
@@ -46,6 +47,11 @@ XEAjax.interceptors.request.use((request, next) => {
 export default {
   data () {
     return {}
+  },
+  methods: {
+    payEvent () {
+      this.$router.push({ name: 'Pay' }).catch(e => e)
+    }
   }
 }
 </script>
@@ -111,6 +117,27 @@ img {
   }
   .link {
     color: #fff;
+  }
+  .pay-btn {
+    color: #fff;
+    margin: 0 0 0 20px;
+    outline: 0;
+    border: 0;
+    padding: 0.2em 0.8em;
+    border-radius: 4px;
+    background-color: #4DC71F;
+    &[disabled] {
+      cursor: no-drop;
+    }
+    &:not([disabled]) {
+      cursor: pointer;
+      &:hover {
+        background-color: #5de42a;
+      }
+      &:active {
+        background-color: #22AB38;
+      }
+    }
   }
 }
 .page-nav {

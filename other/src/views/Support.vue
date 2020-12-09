@@ -10,18 +10,11 @@
           <li>
             左侧扫码申请加入群 或 点击<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=K0y8dWpsIwFtcpKfb4LlVx44bujw1FaL&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="vxe-table 技术支持群" title="vxe-table 技术支持群"></a>
           </li>
-          <li>下方扫码付款 <span class="price-unit">￥{{ disabledSupport ? '-' : supportPrice }}</span></li>
+          <li>点击右上角 <router-link class="link pay-link" :to="{name: 'Pay'}">扫码付款</router-link> <span class="price-unit">￥{{ disabledSupport ? '-' : supportPrice }}</span></li>
           <li>付款完成后，点击“联系收款方”，留言QQ号</li>
-          <li style="font-size: 12px">如有疑问，联系邮件：<a class="link" href="mailto:xu_liangzhan@163.com">xu_liangzhan@163.com</a></li>
+          <li style="font-size: 12px">如有疑问，联系邮件：<a class="link" href="mailto:xu_liangzhan@163.com" style="color: #0F80C1">xu_liangzhan@163.com</a></li>
         </ul>
-        <div class="btn-wrapper">
-          <button v-if="disabledSupport" class="pay-btn is-disabled" type="button" title="当前不在支持的时间之内，工作日：9:30 ~ 18:00">确认扫码付款</button>
-          <button v-else class="pay-btn" type="button" @click="payEvent">确认扫码付款</button>
-        </div>
       </div>
-    </div>
-    <div class="support-pay" v-if="payVisible">
-      <img src="../assets/image/support/pay.jpg">
     </div>
   </div>
 </template>
@@ -30,8 +23,7 @@
 export default {
   data () {
     return {
-      supportPrice: 288,
-      payVisible: false
+      supportPrice: 288
     }
   },
   computed: {
@@ -44,20 +36,13 @@ export default {
       }
       return false
     }
-  },
-  methods: {
-    payEvent () {
-      if (!this.disabledSupport) {
-        this.payVisible = true
-      }
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .support-title {
-    text-align: center;
+  text-align: center;
 }
 .price-unit {
   font-size: 18px;
@@ -82,31 +67,8 @@ export default {
       line-height: 32px;
     }
   }
-  .btn-wrapper {
-    text-align: center;
-    .pay-btn {
-      color: #606266;
-      height: 38px;
-      padding: 0 20px;
-      border-radius: 0 4px 4px 0;
-      border: 1px solid #DCDFE6;
-      background-color: #F5F7FA;
-      vertical-align: middle;
-      outline: 0;
-      user-select: none;
-      &:not(.is-disabled) {
-        cursor: pointer;
-        &:hover {
-          color: #3196ff;
-        }
-        &:active {
-          border-color: #3196ff;
-        }
-      }
-      &.is-disabled {
-        color: #BFBFBF;
-      }
-    }
+  .pay-link {
+    color: #22AB38;
   }
 }
 .is-disabled {
