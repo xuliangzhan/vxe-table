@@ -49,7 +49,7 @@ export default {
     searchEvent () {
       const no = this.formData.no.trim()
       if (!this.invalidNOs.includes(no)) {
-        XEAjax.get(`http://localhost:8888/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?no=${no}`).then(data => {
+        XEAjax.get(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?no=${no}`).then(data => {
           this.list = data.result
           this.pageVO.pageCount = data.page.pageCount
         }).catch(e => {
