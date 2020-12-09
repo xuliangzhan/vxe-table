@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="page-nav">
-      <router-link class="link" :to="{name: 'Support'}">技术支持</router-link> |
+      <router-link class="link" :to="{name: 'Support'}">技术支持群</router-link> |
       <router-link class="link" :to="{name: 'Pro'}">PRO扩展</router-link> |
       <router-link class="link" :to="{name: 'ProAuth'}">PRO 授权查询</router-link> |
       <router-link class="link" :to="{name: 'Filter'}">筛选扩展</router-link> |
@@ -102,6 +102,9 @@ img {
   & > .left {
     font-size: 22px;
     flex-shrink: 0;
+    a {
+      text-decoration: none;
+    }
   }
   & > .right {
     flex-grow: 1;
@@ -158,5 +161,16 @@ img {
   height: 100%;
   overflow: auto;
   flex-grow: 1;
+}
+.update-log {
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 15px;
+  text-decoration: none;
+  color: #409eff;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 </style>

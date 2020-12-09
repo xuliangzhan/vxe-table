@@ -27,6 +27,7 @@ export default {
     return {
       downNewVersion: '1.0.9',
       downStableVersion: '1.0.8',
+      invalidCode: [],
       list: [
         {
           version: '1.0.9',
@@ -121,34 +122,40 @@ export default {
       if (this.$route.path === '/prodl') {
         const code = prompt(decodeURIComponent('%E8%AF%B7%E8%BE%93%E5%85%A5%E6%8E%88%E6%9D%83%E7%A0%81'))
         if (code) {
-          const strs = 'wabpcdoefghijklmnzyt'.split('')
-          const params = {}
-          XEUtils.sample(strs, 10).forEach(key => {
-            params[key] = XEUtils.random(10, 999)
-          })
-          XEAjax.fetchPost(`https://api.xuliangzhan.com:10443/api/pub/pro/download/${downVersion}/${code}`, {
-            n: Date.now(),
-            l: 'pro',
-            c: code
-          }, { params }).then(response => {
-            if (response.status === 200) {
-              response.blob().then(blob => {
-                const a = document.createElement('a')
-                a.target = '_blank'
-                a.download = `vxe-table-pro${downVersion}.rar`
-                a.href = URL.createObjectURL(blob)
-                document.body.appendChild(a)
-                a.click()
-                document.body.removeChild(a)
-              })
-            } else {
-              response.json().then(data => {
-                if (data) {
-                  alert(data.message)
-                }
-              })
-            }
-          })
+          const authCode = code.trim()
+          if (!this.invalidCode.includes(authCode)) {
+            const strs = 'wabpcdoefghijklmnzyt'.split('')
+            const params = {}
+            XEUtils.sample(strs, 10).forEach(key => {
+              params[key] = XEUtils.random(10, 999)
+            })
+            XEAjax.fetchPost(`https://api.xuliangzhan.com:10443/api/pub/pro/download/${downVersion}/${authCode}`, {
+              n: Date.now(),
+              l: 'pro',
+              c: authCode
+            }, { params }).then(response => {
+              if (response.status === 200) {
+                response.blob().then(blob => {
+                  const a = document.createElement('a')
+                  a.target = '_blank'
+                  a.download = `vxe-table-pro${downVersion}.rar`
+                  a.href = URL.createObjectURL(blob)
+                  document.body.appendChild(a)
+                  a.click()
+                  document.body.removeChild(a)
+                })
+              } else {
+                this.invalidCode.push(authCode)
+                response.json().then(data => {
+                  if (data) {
+                    alert(data.message)
+                  }
+                })
+              }
+            })
+          } else {
+            alert(decodeURIComponent('%E6%97%A0%E6%9D%83%E9%99%90%E6%93%8D%E4%BD%9C'))
+          }
         }
       }
     }

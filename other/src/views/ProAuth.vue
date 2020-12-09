@@ -1,24 +1,27 @@
 <template>
   <div class="proauth-page">
     <div class="proauth-form">
-      <input class="form-input" v-model="formData.code" type="search" placeholder="请输入授权码查询">
+      <input class="form-input" v-model="formData.no" type="search" placeholder="请输入编号查询">
       <button class="form-button" type="button" @click="searchEvent">搜索</button>
     </div>
     <div class="proauth-pager">
       <div class="pager-btns">
-        <button class="prev-page-btn" :disabled="pageVO.currentPage <= 1" title="上一页">&lt;</button>
-        <button class="next-page-btn" :disabled="pageVO.currentPage >= pageVO.pageCount" title="下一页">&gt;</button>
+        <button class="prev-page-btn" :disabled="pageVO.currentPage <= 1" title="上一页" @click="prevEvent">&lt;</button>
+        <button class="next-page-btn" :disabled="pageVO.currentPage >= pageVO.pageCount" title="下一页" @click="nextEvent">&gt;</button>
       </div>
     </div>
     <div class="proauth-list">
       <div class="proauth-item" v-for="(item, index) in list" :key="index">
         <div class="proauth-content">
-          <h4 class="item-title">{{ item.name }}</h4>
+          <h4 class="item-title">
+            <span style="margin-right: 0.5em;">{{ item.no }}</span>
+            <span>{{ item.name }}</span>
+          </h4>
           <div class="item-date">授权时间：{{ item.date }}</div>
         </div>
       </div>
       <div v-if="!list.length" class="no-data">
-        <span>可能授权码不正确，找不到对应的记录！</span>
+        <span>可能编号不正确，找不到对应的记录！</span>
       </div>
     </div>
   </div>
@@ -30,25 +33,27 @@ import XEAjax from 'xe-ajax'
 export default {
   data () {
     return {
+      invalidNOs: [],
       pageVO: {
         currentPage: 1,
-        pageSize: 10,
-        total: 0,
+        pageSize: 6,
         pageCount: 1
       },
       formData: {
-        code: ''
+        no: ''
       },
       list: []
     }
   },
   methods: {
     searchEvent () {
-      if (this.formData.code.trim()) {
-        XEAjax.get(`https://api.xuliangzhan.com:10443/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?authCode=${this.formData.code}`).then(data => {
+      const no = this.formData.no.trim()
+      if (!this.invalidNOs.includes(no)) {
+        XEAjax.get(`http://localhost:8888/api/pub/pro/auth/page/list/${this.pageVO.pageSize}/${this.pageVO.currentPage}?no=${no}`).then(data => {
           this.list = data.result
-          this.pageVO.total = data.page.total
-          this.pageVO.pageCount = Math.max(Math.ceil(this.pageVO.total / this.pageVO.pageSize), 1)
+          this.pageVO.pageCount = data.page.pageCount
+        }).catch(e => {
+          this.invalidNOs.push(no)
         })
       }
     },

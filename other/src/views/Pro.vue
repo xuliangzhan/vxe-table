@@ -140,16 +140,6 @@ export default {
   box-shadow: 1px 2px 10px #eee;
   background-color: #fff;
 }
-.update-log {
-  font-weight: 700;
-  font-size: 16px;
-  margin-left: 15px;
-  text-decoration: none;
-  color: #409eff;
-  &:hover {
-    text-decoration: underline;
-  }
-}
 .pro-features {
   position: absolute;
   top: 20px;
